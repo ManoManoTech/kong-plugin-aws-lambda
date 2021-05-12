@@ -27,13 +27,13 @@ describe("[AWS Lambda] aws-gateway input", function()
 
 
     -- make sure to reload the module
-    package.loaded["kong.plugins.aws-lambda.aws-serializer"] = nil
-    aws_serialize = require "kong.plugins.aws-lambda.aws-serializer"
+    package.loaded["kong.plugins.mm-aws-lambda.aws-serializer"] = nil
+    aws_serialize = require "kong.plugins.mm-aws-lambda.aws-serializer"
   end)
 
   teardown(function()
     -- make sure to drop the mocks
-    package.loaded["kong.plugins.aws-lambda.aws-serializer"] = nil
+    package.loaded["kong.plugins.mm-aws-lambda.aws-serializer"] = nil
     ngx = old_ngx         -- luacheck: ignore
   end)
 

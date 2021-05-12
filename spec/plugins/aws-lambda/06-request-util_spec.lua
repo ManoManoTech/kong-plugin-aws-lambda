@@ -12,14 +12,14 @@ for _, strategy in helpers.each_strategy() do
         "routes",
         "services",
         "plugins",
-      }, { "aws-lambda" })
+      }, { "mm-aws-lambda" })
 
 
       local route1 = bp.routes:insert {
         hosts = { "gw.skipfile.com" },
       }
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route1.id },
         config   = {
           port                  = 10001,
@@ -37,7 +37,7 @@ for _, strategy in helpers.each_strategy() do
         hosts = { "gw.readfile.com" },
       }
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route2.id },
         config   = {
           port                  = 10001,
@@ -55,7 +55,7 @@ for _, strategy in helpers.each_strategy() do
         hosts = { "plain.skipfile.com" },
       }
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route3.id },
         config   = {
           port                  = 10001,
@@ -73,7 +73,7 @@ for _, strategy in helpers.each_strategy() do
         hosts = { "plain.readfile.com" },
       }
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route4.id },
         config   = {
           port                  = 10001,
@@ -91,7 +91,7 @@ for _, strategy in helpers.each_strategy() do
         hosts = { "base.sixtyfour.test" },
       }
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route5.id },
         config   = {
           port                  = 10001,
@@ -110,7 +110,7 @@ for _, strategy in helpers.each_strategy() do
         hosts = { "notbase.sixtyfour.test" },
       }
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route6.id },
         config   = {
           port                  = 10001,
@@ -128,7 +128,7 @@ for _, strategy in helpers.each_strategy() do
 
       assert(helpers.start_kong({
         database   = strategy,
-        plugins = "aws-lambda",
+        plugins = "mm-aws-lambda",
         nginx_conf = "spec/fixtures/custom_nginx.template",
       }, nil, nil, fixtures))
     end)

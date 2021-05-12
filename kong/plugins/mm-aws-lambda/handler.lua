@@ -1,12 +1,12 @@
 -- Copyright (C) Kong Inc.
 
-local aws_v4 = require "kong.plugins.aws-lambda.v4"
-local aws_serializer = require "kong.plugins.aws-lambda.aws-serializer"
-local http = require "kong.plugins.aws-lambda.http.connect-better"
+local aws_v4 = require "kong.plugins.mm-aws-lambda.v4"
+local aws_serializer = require "kong.plugins.mm-aws-lambda.aws-serializer"
+local http = require "kong.plugins.mm-aws-lambda.http.connect-better"
 local cjson = require "cjson.safe"
 local meta = require "kong.meta"
 local constants = require "kong.constants"
-local request_util = require "kong.plugins.aws-lambda.request-util"
+local request_util = require "kong.plugins.mm-aws-lambda.request-util"
 
 
 local VIA_HEADER = constants.HEADERS.VIA
@@ -19,9 +19,9 @@ local fetch_credentials
 local fetch_region
 do
   local credential_sources = {
-    require "kong.plugins.aws-lambda.iam-ecs-credentials",
+    require "kong.plugins.mm-aws-lambda.iam-ecs-credentials",
     -- The EC2 one will always return `configured == true`, so must be the last!
-    require "kong.plugins.aws-lambda.iam-ec2-credentials",
+    require "kong.plugins.mm-aws-lambda.iam-ec2-credentials",
   }
 
   for _, credential_source in ipairs(credential_sources) do

@@ -20,7 +20,7 @@ for _, strategy in helpers.each_strategy() do
         "routes",
         "services",
         "plugins",
-      }, { "aws-lambda" })
+      }, { "mm-aws-lambda" })
 
       local route1 = bp.routes:insert {
         hosts = { "lambda.com" },
@@ -112,7 +112,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route1.id },
         config   = {
           port          = 10001,
@@ -124,7 +124,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route1_1.id },
         config   = {
           port          = 10001,
@@ -136,7 +136,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route2.id },
         config   = {
           port            = 10001,
@@ -149,7 +149,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route3.id },
         config   = {
           port            = 10001,
@@ -162,7 +162,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route4.id },
         config   = {
           port          = 10001,
@@ -175,7 +175,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route5.id },
         config   = {
           port          = 10001,
@@ -187,7 +187,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route6.id },
         config   = {
           port            = 10001,
@@ -200,7 +200,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route7.id },
         config   = {
           port            = 10001,
@@ -213,7 +213,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route8.id },
         config   = {
           port             = 10001,
@@ -226,7 +226,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route9.id },
         config   = {
           port                    = 10001,
@@ -242,7 +242,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route10.id },
         config                    = {
           port                    = 10001,
@@ -258,7 +258,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route11.id },
         config                 = {
           port                 = 10001,
@@ -271,7 +271,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route12.id },
         config                 = {
           port                 = 10001,
@@ -284,7 +284,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route13.id },
         config                 = {
           port                 = 10001,
@@ -297,7 +297,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route = { id = route14.id },
         config   = {
           port          = 10001,
@@ -309,7 +309,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route = { id = route15.id },
         config   = {
           port          = 10001,
@@ -321,7 +321,7 @@ for _, strategy in helpers.each_strategy() do
       }
 
       bp.plugins:insert {
-        name     = "aws-lambda",
+        name     = "mm-aws-lambda",
         route    = { id = route16.id },
         config                 = {
           port                 = 10001,
@@ -335,7 +335,7 @@ for _, strategy in helpers.each_strategy() do
 
       assert(helpers.start_kong({
         database   = strategy,
-        plugins = "aws-lambda",
+        plugins = "mm-aws-lambda",
         nginx_conf = "spec/fixtures/custom_nginx.template",
       }, nil, nil, fixtures))
     end)
@@ -703,7 +703,7 @@ for _, strategy in helpers.each_strategy() do
 
       helpers.wait_until(function()
         local logs = pl_file.read(TEST_CONF.prefix .. "/" .. TEST_CONF.proxy_error_log)
-        local _, count = logs:gsub([[handler.lua:%d+ %[aws%-lambda%].+lambda%.ab%-cdef%-1%.amazonaws%.com.+name error"]], "")
+        local _, count = logs:gsub([[handler.lua:%d+ %[mm%-aws%-lambda%].+lambda%.ab%-cdef%-1%.amazonaws%.com.+name error"]], "")
         return count >= 1
       end, 10)
     end)

@@ -105,8 +105,8 @@ describe("#proxy #squid", function()
 
   local http
   before_each(function()
-    package.loaded["kong.plugins.aws-lambda.http.connect-better"] = nil
-    http = require "kong.plugins.aws-lambda.http.connect-better"
+    package.loaded["kong.plugins.mm-aws-lambda.http.connect-better"] = nil
+    http = require "kong.plugins.mm-aws-lambda.http.connect-better"
   end)
 
   lazy_teardown(function()
@@ -127,8 +127,8 @@ describe("#keepalive #squid", function()
 
   local http
   before_each(function()
-    package.loaded["kong.plugins.aws-lambda.http.connect-better"] = nil
-    http = require "kong.plugins.aws-lambda.http.connect-better"
+    package.loaded["kong.plugins.mm-aws-lambda.http.connect-better"] = nil
+    http = require "kong.plugins.mm-aws-lambda.http.connect-better"
   end)
 
   lazy_teardown(function()

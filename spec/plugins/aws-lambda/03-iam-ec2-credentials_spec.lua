@@ -5,7 +5,7 @@ describe("[AWS Lambda] iam-ec2", function()
   local fetch_ec2, fetch_region, http_responses
 
   before_each(function()
-    package.loaded["kong.plugins.aws-lambda.iam-ec2-credentials"] = nil
+    package.loaded["kong.plugins.mm-aws-lambda.iam-ec2-credentials"] = nil
     package.loaded["resty.http"] = nil
     local http = require "resty.http"
     -- mock the http module
@@ -27,8 +27,8 @@ describe("[AWS Lambda] iam-ec2", function()
         end,
       }
     end
-    fetch_ec2 = require("kong.plugins.aws-lambda.iam-ec2-credentials").fetchCredentials
-    fetch_region = require("kong.plugins.aws-lambda.iam-ec2-credentials").fetchRegion
+    fetch_ec2 = require("kong.plugins.mm-aws-lambda.iam-ec2-credentials").fetchCredentials
+    fetch_region = require("kong.plugins.mm-aws-lambda.iam-ec2-credentials").fetchRegion
   end)
 
   after_each(function()

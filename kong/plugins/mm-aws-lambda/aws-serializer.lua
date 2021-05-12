@@ -2,7 +2,7 @@
 -- format as described here:
 -- https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
 
-local request_util = require "kong.plugins.aws-lambda.request-util"
+local request_util = require "kong.plugins.mm-aws-lambda.request-util"
 
 local EMPTY = {}
 
