@@ -1,5 +1,5 @@
 package = "kong-plugin-mm-aws-lambda"
-version = "3.6.0-0"
+version = "3.6.0-1"
 
 supported_platforms = {"linux", "macosx"}
 source = {
